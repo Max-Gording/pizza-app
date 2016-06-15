@@ -27,7 +27,22 @@
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Pizza Live</title>
+        <!--css media for tabletcomputer (landscape ) and big smartphones (landscape)-------------------------------------------------------------------------------------------------------->
+        <link rel="stylesheet" media="screen  and (min-device-width:355px) and (orientation: landscape) and  (-webkit-min-device-pixel-ratio: 1.3),
+screen and (min-device-width:355px) and  (orientation: landscape) and  (min-device-pixel-ratio: 1.3),
+screen  and  (min-device-width:500px) and  (orientation: landscape) and  (-webkit-min-device-pixel-ratio: 1.3),
+screen and (min-device-width:500px) and  (orientation: landscape) and (min-device-pixel-ratio: 1.3)" type="text/css" href="css/index-tablet-landscape.css" />
+        <!--media-query for tabletcomputer (portrait) and big smartphones (portrait)----------------------------------------------------------------------------------------------------------->
+        <link rel="stylesheet" media="screen  and (min-device-width:355px) and (orientation: portrait) and  (-webkit-min-device-pixel-ratio: 1.3), /*big smartphones*/
+screen and (min-device-width:355px) and  (orientation: portrait) and  (min-device-pixel-ratio: 1.3),
+screen  and  (min-device-width:500px) and  (orientation: portrait) and  (-webkit-min-device-pixel-ratio: 1.3),
+screen and (min-device-width:500px) and  (orientation: portrait) and (min-device-pixel-ratio: 1.3)" type="text/css" href="css/index-tablet-portrait.css" />
+        <!--media-query for normal smartphones (landscape)-------------------------------------------------------------------------------------------------------------------------------------->
+        <link rel="stylesheet" media="screen  and  (max-device-width:630px) and  (min-resolution: 160dpi) and (orientation: landscape)" type="text/css" href="css/index-smartphones-landscape.css" />
+        <!--media-query for normal smartphones (portrait)--------------------------------------------------------------------------------------------------------------------------------------->
+        <link rel="stylesheet" media="screen  and  (max-device-width:630px) and  (min-resolution: 160dpi) and (orientation: portrait)" type="text/css" href="css/index-smartphones-portrait.css" />
+		
+		<title>Pizza Live</title>
     </head>
     <body>
         <div class="app">
