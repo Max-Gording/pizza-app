@@ -29,9 +29,16 @@
 
     body {
         background: url(../img/pizza-live-background-portrait-225x400.png) no-repeat center;
-        height: 200vw;
+        height: 180vw;
         width:100vw;
         background-size: cover;
+    }
+
+    .load-container {
+        height: 100vw;
+        width: 100vw;
+        margin-left: 20%;
+        margin-top: 50%;
     }
 
 
