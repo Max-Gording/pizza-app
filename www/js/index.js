@@ -18,32 +18,101 @@
  */
 var app = {
     // Application Constructor
+    state: "startAppNoRotate",
+
     initialize: function() {
         this.bindEvents();
+        //    alert("goingState =" +  app.goingState);
     },
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener('deviceready', app.onDeviceReady, false);
+        //    alert ("Первый Eventlistener");
+        document.addEventListener('online', app.onOnline, false);
+        document.addEventListener('offline', app.onOffline, false);
+        //    alert("Еще два листенера");
+
     },
     // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
+
     onDeviceReady: function() {
-        app.receivedEvent('deviceready');
+
+
+        /*    function onOffline(){
+         app.goingState = "no-internet";
+         //   app.stopRotation();
+         alert("Keine Internet Verbindung!");
+         }
+
+         function onOnline(){
+         app.goingState = "connected";
+         //   app.stopRotation();
+         alert("Verbinden!");
+         }
+         */
+        //   alert(app.goingState);
+        if (app.onOnline() == true) {
+            //     alert(app.goingState);
+            var ref = window.open('http://www.live-bringdienst.de/vorspeisen.html', '_blank', 'location=no,hidden=yes,closebuttoncaption=Done,toolbar=no');
+            app.goingState = "loading";
+            var loadStopCallback = function (event) {
+                //     alert('stop: ' + event.url);
+                // setTimeout(function(){ app.stopRotation()},40);
+                app.stopRotation();
+                ref.show();
+                app.goingState = "show-shop";
+            }
+            ref.addEventListener('loadstop', loadStopCallback);
+        }
+
     },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
 
-        console.log('Received Event: ' + id);
-    }
+    stopRotation: function(){
+        //    alert("Попали в stopRotation");
+        //    app.goingState = "stopped";
+        var circularProgressContainer = document.querySelector('#circular-progress');
+        circularProgressContainer.classList.remove("visible");
+        circularProgressContainer.classList.add("not-visible");
+    },
+
+    startRotation: function(){
+        var circularProgressContainer = document.querySelector('#circular-progress');
+        circularProgressContainer.classList.remove("not-visible");
+        circularProgressContainer.classList.add("visible");
+    },
+
+    onOffline: function(){
+        app.goingState = "no-internet";
+        app.stopRotation();
+        alert("Leider gibt es keine Internetverbindung.  Die Bestellung konnte nicht aufgegeben werden. Schließen Sie bitee die App um später zu probieren.");
+        var noInternetMsgContainer = document.querySelector('#no-internet-msg-container');
+        noInternetMsgContainer.classList.remove("not-visible");
+        noInternetMsgContainer.classList.add("visible");
+    },
+
+    onOnline: function(){
+        app.goingState = "connected";
+        //  app.startRotation();
+        //    alert("Verbinden!");
+        var noInternetMsgContainer = document.querySelector('#no-internet-msg-container');
+        noInternetMsgContainer.classList.remove("visible");
+        noInternetMsgContainer.classList.add("not-visible");
+        return true;
+    },
+
+
+    get goingState() {
+        return this.state;
+    },
+
+    set goingState(value){
+        this.state = value;
+        //   alert("Только что присвоили state = " + this.state)
+    },
+
+
 };
