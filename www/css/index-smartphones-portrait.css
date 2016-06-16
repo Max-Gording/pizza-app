@@ -29,20 +29,20 @@
 
     body {
         background: url(../img/pizza-live-background-portrait-225x400.png) no-repeat center;
-        height: 180vw;
+        height: 170vw;
         width:100vw;
         background-size: cover;
     }
 
     .load-container {
         height: 100vw;
-        width: 100vw;
+        width: 170vw;
         margin-left: 20%;
         margin-top: 50%;
     }
 
 .load6 .loader {
-    font-size: 100vw;
+    font-size: 150px;
 }
 
 
