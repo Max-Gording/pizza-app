@@ -41,8 +41,9 @@
         margin-top: 70%;
     }
 
-.load6 .loader {
-    font-size: 150px;
+#circular-progress .loader {
+    font-size: 180px;
+    margin-top: 40%;
 }
 
 
