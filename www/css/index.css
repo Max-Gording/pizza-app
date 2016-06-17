@@ -168,7 +168,7 @@ h1 {
 
 .load6 .loader {
     color: green;
-   /* font-size: 25vw; */
+   font-size: 20vw;
     text-indent: -9999em;
     overflow: hidden;
     width: 1em;
