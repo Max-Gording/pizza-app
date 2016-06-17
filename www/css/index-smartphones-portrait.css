@@ -37,12 +37,12 @@
     .load-container {
         height: 80vw!important;
         width: 80vw!important;
-        margin-left: 20%;
-        margin-top: 50%;
+        margin-left: 20%!important;
+        margin-top: 50%!important;
     }
 
 #circular-progress .loader {
-   font-size: 15vw!important;
+   font-size: 10vw!important;
 
 }
 
