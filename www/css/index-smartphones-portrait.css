@@ -42,7 +42,7 @@
     }
 
 #circular-progress .loader {
-    font-size: 20vw;
+   font-size: 20vw!important;
 
 }
 
