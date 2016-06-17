@@ -35,8 +35,8 @@
     }
 
     .load-container {
-        height: 60vw;
-        width: 60vw;
+        height: 80vw!important;
+        width: 80vw!important;
         margin-left: 20%;
         margin-top: 50%;
     }
