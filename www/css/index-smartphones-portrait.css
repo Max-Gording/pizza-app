@@ -25,26 +25,27 @@
 /*media-query for normal smartphones (portrait)-----------------------------------------------------------------------------------*/
 
 
- @media only screen  and  (max-device-width:630px) and  (min-resolution: 160dpi) and (orientation: portrait)
+ @media only screen  and  (max-device-width:630px) and  (min-resolution: 160dpi) and (orientation: portrait) {
+     body {
+         background: url(../img/pizza-live-background-portrait-225x400.png) no-repeat center;
+         height: 170vw;
+         width: 100vw;
+         background-size: cover;
+     }
 
-    body {
-        background: url(../img/pizza-live-background-portrait-225x400.png) no-repeat center;
-        height: 170vw;
-        width:100vw;
-        background-size: cover;
-    }
+     .load-container {
+         height: 80vw !important;
+         width: 80vw !important;
+         margin-left: 20% !important;
+         margin-top: 50% !important;
+     }
 
-    .load-container {
-        height: 80vw!important;
-        width: 80vw!important;
-        margin-left: 20%!important;
-        margin-top: 50%!important;
-    }
+     #circular-progress .loader {
+         font-size: 60vw !important;
 
-#circular-progress .loader {
-   font-size: 60vw!important;
+     }
 
-}
+ }
 
 
 
