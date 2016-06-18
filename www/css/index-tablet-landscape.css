@@ -39,10 +39,17 @@
     }
 
     .load-container {
-        height: 25vw;
-        width: 25vw;
+        height: 30vw;
+        width: 30vw;
         margin-left: 35vw;
-        margin-top: 10vw;
+        margin-top: 15vw;
+    }
+
+    .load6 .loader{
+        font-size: 11vw;
+        position: absolute;
+        top:5vw;
+        left:9vw;
     }
 
     #no-internet-msg-container{

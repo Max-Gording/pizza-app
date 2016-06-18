@@ -25,7 +25,7 @@
 /*media-query for normal smartphones (portrait)-----------------------------------------------------------------------------------*/
 
 
- @media only screen  and  (max-device-width:630px) and  (min-resolution: 160dpi) and (orientation: portrait) {
+ /*@media only screen  and  (max-device-width:630px) and  (min-resolution: 160dpi) and (orientation: portrait) */
      body {
          background: url(../img/pizza-live-background-portrait-225x400.png) no-repeat center;
          height: 170vw;
@@ -45,7 +45,7 @@
 
      }
 
- }
+
 
 
 
