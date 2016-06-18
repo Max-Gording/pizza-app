@@ -56,7 +56,7 @@ var app = {
         //   alert(app.goingState);
         if (app.onOnline() == true) {
             //     alert(app.goingState);
-            var ref = window.open('http://v2.pizza-web.de/', '_blank', 'location=yes,hidden=yes,closebuttoncaption=Done,toolbar=no');
+            var ref = window.open('http://v2.pizza-web.de/', '_system', 'location=no,hidden=yes,closebuttoncaption=Done,toolbar=no');
             app.goingState = "loading";
             var loadStopCallback = function (event) {
                 //     alert('stop: ' + event.url);
