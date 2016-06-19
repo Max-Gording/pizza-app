@@ -39,7 +39,7 @@ var app = {
     // deviceready Event Handler
 
     onDeviceReady: function() {
-        window.open = window.cordova.InAppBrowser.open;
+        window.open = cordova.InAppBrowser.open;
         /*    function onOffline(){
          app.goingState = "no-internet";
          //   app.stopRotation();
