@@ -39,7 +39,7 @@ var app = {
     // deviceready Event Handler
 
     onDeviceReady: function() {
-
+        alert("Проверяем, есть ли плагин InAppBrouser " + isInAppBrowserInstalled());
         window.open = window.cordova.InAppBrowser.open;
         /*    function onOffline(){
          app.goingState = "no-internet";
