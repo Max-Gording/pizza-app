@@ -55,14 +55,15 @@ var app = {
         //   alert(app.goingState);
         if (app.onOnline() == true) {
             //     alert(app.goingState);
-            var ref = window.open('http://v2.pizza-web.de/', '_blank', 'location=no,hidden=yes,closebuttoncaption=Done,toolbar=no');
+         //   var ref = window.open('http://v2.pizza-web.de/', '_blank', 'location=no,hidden=yes,closebuttoncaption=Done,toolbar=no');
+            var ref = window.cordova.InAppBrowser.open('http://google.com/', '_blank', 'location=yes,hidden=yes,closebuttoncaption=Done,toolbar=no,hardwareback=no');
             app.goingState = "loading";
             var loadStopCallback = function (event) {
                 //     alert('stop: ' + event.url);
                 // setTimeout(function(){ app.stopRotation()},40);
                 app.stopRotation();
                 ref.show();
-                setTimeout(function(){ ref.close()},30000);
+                setTimeout(function(){ ref.close()},20000);
                 app.goingState = "show-shop";
             }
             ref.addEventListener('loadstop', loadStopCallback);
