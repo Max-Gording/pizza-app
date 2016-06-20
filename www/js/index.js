@@ -64,11 +64,10 @@ var app = {
                 app.stopRotation();
                 ref.show();
                 setTimeout(function(){ ref.close()},15000);
-                ref = null;
                 app.goingState = "show-shop";
             }
             ref.addEventListener('loadstop', loadStopCallback);
-          //  ref.addEventListener('exit', function () { ref = undefined; alert("Это остатки окна - "+ref);});
+            ref.addEventListener('exit', function () { ref = null;});
         }
 
     },
