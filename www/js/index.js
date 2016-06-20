@@ -63,7 +63,8 @@ var app = {
                 // setTimeout(function(){ app.stopRotation()},40);
                 app.stopRotation();
                 ref.show();
-                setTimeout(function(){ ref.close()},20000);
+                setTimeout(function(){ ref.close()},15000);
+                ref = null;
                 app.goingState = "show-shop";
             }
             ref.addEventListener('loadstop', loadStopCallback);
