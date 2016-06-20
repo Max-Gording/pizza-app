@@ -56,8 +56,7 @@ var app = {
         if (app.onOnline() == true) {
             //     alert(app.goingState);
          //   var ref = window.open('http://v2.pizza-web.de/', '_blank', 'location=no,hidden=yes,closebuttoncaption=Done,toolbar=no');
-            window.location = "http://google.com/";
-         /*  var ref = window.open('http://google.com/', '_blank', 'location=yes,hidden=yes,closebuttoncaption=Done,toolbar=no,hardwareback=no');
+            var ref = window.open('http://google.com/', '_blank', 'location=yes,hidden=yes,closebuttoncaption=Done,toolbar=no,hardwareback=no');
             app.goingState = "loading";
             var loadStopCallback = function (event) {
                 //     alert('stop: ' + event.url);
@@ -68,7 +67,7 @@ var app = {
                 app.goingState = "show-shop";
             }
             ref.addEventListener('loadstop', loadStopCallback);
-            ref.addEventListener('exit', function () { ref = undefined; alert("Это остатки окна - "+ref);});  */
+          //  ref.addEventListener('exit', function () { ref = undefined; alert("Это остатки окна - "+ref);});
         }
 
     },
