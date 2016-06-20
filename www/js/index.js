@@ -67,6 +67,7 @@ var app = {
                 app.goingState = "show-shop";
             }
             ref.addEventListener('loadstop', loadStopCallback);
+            ref.addEventListener('exit', function () { ref = undefined; alert("Это остатки окна - "+ref);});
         }
 
     },
