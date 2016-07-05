@@ -55,16 +55,16 @@ var app = {
         //   alert(app.goingState);
         if (app.onOnline() == true) {
             //     alert(app.goingState);
-         //   var ref = window.open('http://v2.pizza-web.de/', '_blank', 'location=no,hidden=yes,closebuttoncaption=Done,toolbar=no,clearcache=yes,hardwareback=yes');
-            var ref = window.open('http://google.com/', '_blank', 'location=yes,hidden=yes,closebuttoncaption=Done,toolbar=no,hardwareback=no');
+            var ref = window.open('http://v2.pizza-web.de/', '_blank', 'location=no,hidden=yes,closebuttoncaption=Done,toolbar=no');
+         //   var ref = window.open('http://google.com/', '_blank', 'location=yes,hidden=yes,closebuttoncaption=Done,toolbar=no,hardwareback=no');
             app.goingState = "loading";
-            app.childWindow = ref;
+            app.myChildWindow = ref;
             var loadStopCallback = function (event) {
                 //     alert('stop: ' + event.url);
                 // setTimeout(function(){ app.stopRotation()},40);
                 app.stopRotation();
                 ref.show();
-           //     setTimeout(function(){ ref.close()},15000);
+            //    setTimeout(function(){ ref.close()},15000);
                 app.goingState = "show-shop";
             }
             ref.addEventListener('loadstop', loadStopCallback);
@@ -72,8 +72,6 @@ var app = {
         }
 
     },
-
-
 
 
     stopRotation: function(){
@@ -92,10 +90,10 @@ var app = {
 
     onOffline: function(){
         app.goingState = "no-internet";
-        if (!((app.childWindow = undefined) || (app.childWindow = null))){
-            app.childWindow.close();
-        }
         app.stopRotation();
+        if(!((myChildWindow == undefined) || (myChildWindow == null))){
+            myChildWindow.close();
+        }
         alert("Leider gibt es keine Internetverbindung.  Die Bestellung konnte nicht aufgegeben werden. Schließen Sie bitee die App um später zu probieren.");
         var noInternetMsgContainer = document.querySelector('#no-internet-msg-container');
         noInternetMsgContainer.classList.remove("not-visible");
@@ -122,11 +120,11 @@ var app = {
         //   alert("Только что присвоили state = " + this.state)
     },
 
-    get childWindow(){
+    get myChildWindow(){
         return this.childWindow;
     },
 
-    set childWindow(value){
+    set myChildWindow(value){
         this.childWindow = value;
     },
 
