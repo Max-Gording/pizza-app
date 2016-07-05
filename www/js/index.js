@@ -55,7 +55,7 @@ var app = {
         //   alert(app.goingState);
         if (app.onOnline() == true) {
             //     alert(app.goingState);
-            var ref = window.open('http://live-bringdienst.de/', '_blank', 'location=no,hidden=yes,closebuttoncaption=Done,toolbar=no');
+            var ref = window.open('http://v2.pizza-web.de/', '_blank', 'location=no,hidden=yes,closebuttoncaption=Done,toolbar=no');
            // var ref = window.open('http://google.com/', '_blank', 'location=yes,hidden=yes,closebuttoncaption=Done,toolbar=no,hardwareback=no');
             app.goingState = "loading";
             app.childWindow = ref;
@@ -64,7 +64,7 @@ var app = {
                 // setTimeout(function(){ app.stopRotation()},40);
                 app.stopRotation();
                 ref.show();
-                setTimeout(function(){ ref.close()},15000);
+           //     setTimeout(function(){ ref.close()},15000);
                 app.goingState = "show-shop";
             }
             ref.addEventListener('loadstop', loadStopCallback);
