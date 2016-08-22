@@ -18,43 +18,42 @@
  */
 var app = {
     // Application Constructor
-    state: "startAppNoRotate",
-
     initialize: function() {
+        app.goingState = "startApp";
         this.bindEvents();
         //    alert("goingState =" +  app.goingState);
     },
     // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
+     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', app.onDeviceReady, false);
-        //    alert ("Первый Eventlistener");
+        //    alert ("First Eventlistener");
         document.addEventListener('online', app.onOnline, false);
-        document.addEventListener('offline', app.onOffline, false);
-        //    alert("Еще два листенера");
+        document.addEventListener('offline', function(){
+                                               //  alert("Timeout");
+                                               //  setTimeout(function(){app.onOffline(), 40000});
+                                                  app.onOffline();
+                                              }, false
+                                 );
+        //    alert("Next two listeners");
 
     },
     // deviceready Event Handler
 
     onDeviceReady: function() {
         window.open = cordova.InAppBrowser.open;
-        /*    function onOffline(){
-         app.goingState = "no-internet";
-         //   app.stopRotation();
-         alert("Keine Internet Verbindung!");
-         }
 
-         function onOnline(){
-         app.goingState = "connected";
-         //   app.stopRotation();
-         alert("Verbinden!");
-         }
-         */
-        //   alert(app.goingState);
         if (app.onOnline() == true) {
             //     alert(app.goingState);
+            var passData;
+            app.readFromPassFile('pass_file.json', function(passFileData){
+                passData = passFileData;
+            });
+            alert("Returne from readFromPassFile");
+            if (app.passFileErrorTyp === 1){
+                alert("No PassFile");
+            }
             var ref = window.open('http://v2.pizza-web.de/', '_blank', 'location=no,hidden=yes,closebuttoncaption=Done,toolbar=no');
          //   var ref = window.open('http://google.com/', '_blank', 'location=yes,hidden=yes,closebuttoncaption=Done,toolbar=no,hardwareback=no');
             app.goingState = "loading";
@@ -89,15 +88,21 @@ var app = {
     },
 
     onOffline: function(){
-        app.goingState = "no-internet";
-        app.stopRotation();
-        if(!((myChildWindow == undefined) || (myChildWindow == null))){
-            myChildWindow.close();
+        setTimeout(closeOnOffline, 15000);
+        function closeOnOffline() {
+            var networkState = navigator.connection.type;
+            alert("NetworkState = "+networkState);
+            if (networkState == Connection.NONE){
+                app.goingState = "no-internet";
+                app.stopRotation();
+                alert("No connection!"); //Debug
+                app.myChildWindowClose();
+                alert("Leider gibt es keine Internetverbindung.  Die Bestellung konnte nicht aufgegeben werden. Schließen Sie bitee die App um später zu probieren.");
+                var noInternetMsgContainer = document.querySelector('#no-internet-msg-container');
+                noInternetMsgContainer.classList.remove("not-visible");
+                noInternetMsgContainer.classList.add("visible");
+            };
         }
-        alert("Leider gibt es keine Internetverbindung.  Die Bestellung konnte nicht aufgegeben werden. Schließen Sie bitee die App um später zu probieren.");
-        var noInternetMsgContainer = document.querySelector('#no-internet-msg-container');
-        noInternetMsgContainer.classList.remove("not-visible");
-        noInternetMsgContainer.classList.add("visible");
     },
 
     onOnline: function(){
@@ -110,6 +115,57 @@ var app = {
         return true;
     },
 
+    checkLocalStorageSupport:  function(){
+        var testKey = 'test', storage = window.localStorage;
+        try {
+            storage.setItem(testKey, '1');
+            storage.removeItem(testKey);
+            return true;
+        } catch (error) {
+            return false;
+        }
+    },
+
+    localStoreDataTestCreate:  function(lolo, papa){    // Only for test
+        if (app.checkLocalStorageSupport()){
+            var myLocalStore = window.localStorage;
+            var myLolo = lolo;
+            var myPapa = papa;
+            myLocalStore.setItem(myLolo, myPapa);
+        }
+        else{
+            alert("Leider wird Ihr Browser Local Storage nicht unterstützt, und Sie können unser App nicht benutzen!");
+        }
+    },
+
+    myChildWindowClose: function(){
+        if(!((app.myChildWindow == undefined) || (app.myChildWindow == null))){
+            app.myChildWindow.close();
+        }
+    },
+
+    readFromPassFile: function(fileName, cb) {
+        alert("Enter readFromPassFile");
+        var pathToFile = cordova.file.dataDirectory + fileName;
+        alert(pathToFile);
+        window.resolveLocalFileSystemURL(pathToFile, function (fileEntry) {
+            fileEntry.file(function (file) {
+                var reader = new FileReader();
+
+                reader.onloadend = function (e) {
+                    cb(JSON.parse(this.result));
+                };
+
+                reader.readAsText(file);
+            }, app.errorPassFileHandler.bind(null, fileName));
+        }, app.errorPassFileHandler.bind(null, fileName));
+    },
+
+    errorPassFileHandler: function(fileName, e){
+        alert("Enter errorPassFileHandler");
+        app.passFileErrorTyp = e.code;
+        alert(e.code);
+    },
 
     get goingState() {
         return this.state;
@@ -127,6 +183,18 @@ var app = {
     set myChildWindow(value){
         this.childWindow = value;
     },
+
+    get passFileErrorTyp(){
+        return this.childWindow;
+    },
+
+    set passFileErrorTyp(value){
+        this.childWindow = value;
+    },
+
+
+
+
 
 
 };
