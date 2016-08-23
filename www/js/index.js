@@ -17,15 +17,19 @@
  * under the License.
  */
 var app = {
+
+    /*---------------app object property -------------------------------------------------------------------------------*/
     // Application Constructor
     initialize: function() {
         app.goingState = "startApp";
         this.bindEvents();
-        //    alert("goingState =" +  app.goingState);
     },
+
+    /*---------------app object property -------------------------------------------------------------------------------*/
     // Bind Event Listeners
      // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
+
     bindEvents: function() {
         document.addEventListener('deviceready', app.onDeviceReady, false);
         //    alert ("First Eventlistener");
@@ -39,6 +43,8 @@ var app = {
         //    alert("Next two listeners");
 
     },
+
+    /*---------------app object property -------------------------------------------------------------------------------*/
     // deviceready Event Handler
 
     onDeviceReady: function() {
@@ -67,11 +73,12 @@ var app = {
                 app.goingState = "show-shop";
             }
             ref.addEventListener('loadstop', loadStopCallback);
-            ref.addEventListener('exit', function () { ref = null;});
+            ref.addEventListener('exit', function(){ ref = null;});
         }
 
     },
 
+    /*---------------app object property -------------------------------------------------------------------------------*/
 
     stopRotation: function(){
         //    alert("Попали в stopRotation");
@@ -81,11 +88,15 @@ var app = {
         circularProgressContainer.classList.add("not-visible");
     },
 
+    /*---------------app object property -------------------------------------------------------------------------------*/
+
     startRotation: function(){
         var circularProgressContainer = document.querySelector('#circular-progress');
         circularProgressContainer.classList.remove("not-visible");
         circularProgressContainer.classList.add("visible");
     },
+
+    /*---------------app object property -------------------------------------------------------------------------------*/
 
     onOffline: function(){
         setTimeout(closeOnOffline, 15000);
@@ -105,6 +116,8 @@ var app = {
         }
     },
 
+    /*---------------app object property -------------------------------------------------------------------------------*/
+
     onOnline: function(){
         app.goingState = "connected";
         //  app.startRotation();
@@ -114,6 +127,8 @@ var app = {
         noInternetMsgContainer.classList.add("not-visible");
         return true;
     },
+
+    /*---------------app object property -------------------------------------------------------------------------------*/
 
     checkLocalStorageSupport:  function(){
         var testKey = 'test', storage = window.localStorage;
@@ -126,7 +141,10 @@ var app = {
         }
     },
 
-    localStoreDataTestCreate:  function(lolo, papa){    // Only for test
+    /*---------------app object property -------------------------------------------------------------------------------*/
+    // Only for test
+
+    localStoreDataTestCreate:  function(lolo, papa){
         if (app.checkLocalStorageSupport()){
             var myLocalStore = window.localStorage;
             var myLolo = lolo;
@@ -138,11 +156,17 @@ var app = {
         }
     },
 
+    /*---------------app object property -------------------------------------------------------------------------------*/
+
     myChildWindowClose: function(){
         if(!((app.myChildWindow == undefined) || (app.myChildWindow == null))){
             app.myChildWindow.close();
+            return;
         }
+        else{return}
     },
+
+    /*---------------app object property -------------------------------------------------------------------------------*/
 
     readFromPassFile: function(fileName, cb) {
         alert("Enter readFromPassFile");
@@ -161,11 +185,15 @@ var app = {
         }, app.errorPassFileHandler.bind(null, fileName));
     },
 
+    /*---------------app object property -------------------------------------------------------------------------------*/
+
     errorPassFileHandler: function(fileName, e){
         alert("Enter errorPassFileHandler");
         app.passFileErrorTyp = e.code;
         alert(e.code);
     },
+
+    /*---------------app object property -------------------------------------------------------------------------------*/
 
     get goingState() {
         return this.state;
@@ -176,17 +204,25 @@ var app = {
         //   alert("Только что присвоили state = " + this.state)
     },
 
+    /*---------------app object property -------------------------------------------------------------------------------*/
+
     get myChildWindow(){
         return this.childWindow;
     },
+
+    /*---------------app object property -------------------------------------------------------------------------------*/
 
     set myChildWindow(value){
         this.childWindow = value;
     },
 
+    /*---------------app object property -------------------------------------------------------------------------------*/
+
     get passFileErrorTyp(){
         return this.childWindow;
     },
+
+    /*---------------app object property -------------------------------------------------------------------------------*/
 
     set passFileErrorTyp(value){
         this.childWindow = value;
@@ -196,5 +232,5 @@ var app = {
 
 
 
-
+/*---------------app object  -------------------------------------------------------------------------------*/
 };
