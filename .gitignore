@@ -1,3 +1,8 @@
 # OS X
 .DS_Store
 /old-versions
+/plugins
+/platforms
+/.idea
+config.xml
+/www/js/index-1.js
