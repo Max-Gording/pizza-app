@@ -39,7 +39,7 @@ body {
 
     background-attachment:fixed;
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-    font-size:0.7em;
+    font-size:1.2em;
   /*  height:100%; */
     margin:0px;
     padding:0px;
@@ -84,6 +84,10 @@ h1 {
     overflow:visible;
     padding:0px;
     text-align:center;
+}
+
+h2{
+    font-size: 1.5em;
 }
 
 .not-visible{
