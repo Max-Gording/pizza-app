@@ -39,7 +39,7 @@ body {
 
     background-attachment:fixed;
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-    font-size:3vw;
+    font-size:0.7em;
   /*  height:100%; */
     margin:0px;
     padding:0px;
@@ -244,6 +244,55 @@ h1 {
 #no-internet-msg-container h2{
     float: none;
     position: absolute;
+}
+
+#login-register-container{
+    background: rgba(255, 255, 255, 0.9) none repeat scroll 0 0;
+    border: 1px solid black;
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 3em;
+    padding-bottom: 4em;
+    margin-top: 3em;
+    color: green;
+}
+
+.wide-container{
+    width: 100%;
+    text-align: center;
+}
+
+.input-text-box.centered-input{
+    width: 80%;
+    height: 1.5em;
+    margin: 0 auto;
+    border: 1px solid green;
+}
+
+#login-container{
+    margin-top: -1em;
+}
+
+#loginfo-send-button-container{
+    margin-top: 2em;
+    margin-bottom: 1em;
+    text-align: center;
+    display: block;
+}
+
+.send-button.centered-input{
+    width: 30%;
+    margin-bottom: 2em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-right: 15%;
+    padding-left: 15%;
+    margin: 0 auto;
+    text-align: center;
+    background-color: green;
+    color: white;
+
 }
 
 
