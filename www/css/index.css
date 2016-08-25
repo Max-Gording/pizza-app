@@ -78,7 +78,7 @@ body {
 } */
 
 h1 {
-    font-size:24px;
+    font-size:3.5em;
     font-weight:normal;
     margin:0px;
     overflow:visible;
@@ -87,7 +87,8 @@ h1 {
 }
 
 h2{
-    font-size: 1.5em;
+    font-size: 2.7em;
+    font-weight: normal;
 }
 
 .not-visible{
@@ -269,9 +270,13 @@ h2{
 
 .input-text-box.centered-input{
     width: 80%;
-    height: 1.5em;
     margin: 0 auto;
     border: 1px solid green;
+    font-size: 3em;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
 }
 
 #login-container{
@@ -287,9 +292,8 @@ h2{
 
 .send-button.centered-input{
     width: 30%;
-    margin-bottom: 2em;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
     padding-right: 15%;
     padding-left: 15%;
     margin: 0 auto;
