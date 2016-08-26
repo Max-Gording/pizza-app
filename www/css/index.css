@@ -298,9 +298,12 @@ h2{
     padding-left: 15%;
     margin: 0 auto;
     text-align: center;
-    background-color: green;
+    background-color: #5e7d00;
     color: white;
+}
 
+#loginfo-send-button{
+    background-color: green;
 }
 
 
